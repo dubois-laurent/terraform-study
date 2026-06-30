@@ -57,7 +57,7 @@ jobs:
 
   # Stage 4 : Deploy
   deploy-staging:
-    needs: build
+    needs: [build, security]
     runs-on: ubuntu-latest
     environment: staging
     steps:
