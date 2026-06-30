@@ -63,3 +63,17 @@ jobs:
     environment: production
     steps:
       - run: echo "Deploying version ${{ github.sha }}..."
+
+  deploy-staging:
+  needs: build
+  runs-on: ubuntu-latest
+  environment: staging
+  steps:
+      - run: echo "Deploying to staging..."
+
+  deploy-production:
+    needs: deploy-staging
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - run: echo "Deploying to production..."
